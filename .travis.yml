@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t oludbaba/docker-frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true oludbaba/docker-frontend npm run test -- --coverage
